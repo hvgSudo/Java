@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class Hackerrank{
+public class Hackerrank_1{
 
     static int fibonacci(int n) {
         int a = 0;

@@ -3,8 +3,8 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package javaapplication1;
-import java.util.*;
+//package javaapplication1;
+import java.util.Scanner;
 
 /**
  *
@@ -22,6 +22,7 @@ public class JavaApplication1 {
         System.out.println("I am Harsh");
         System.out.print("Enter a number: ");
         int a = sc.nextInt();
+        sc.close();
         for (int i = 0; i < a; i++) {
             System.out.print(i +" ");
         }
