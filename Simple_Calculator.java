@@ -1,5 +1,4 @@
 import java.util.Scanner;
-import java.math.*;
 
 public class Simple_Calculator {
     static Scanner sc = new Scanner(System.in);
@@ -42,10 +41,13 @@ public class Simple_Calculator {
     }
 
     static float mean(int n) {
-        float sum = 0, number;
+        float sum = 0;
+        String num = "";
+        int number;
         System.out.println("Enter the numbers: ");
-        for (int i = 0; i < n; i++) {
-            number = sc.nextFloat();
+        while (num != "end") {
+            num = sc.nextLine();
+            number = Integer.parseInt(num);
             sum = sum + number;
         }
         return (sum / n);

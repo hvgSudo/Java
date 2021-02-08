@@ -20,5 +20,6 @@ public class testing {
         } catch (Exception e) {
 
         }
+        in.close();
     }
 }
