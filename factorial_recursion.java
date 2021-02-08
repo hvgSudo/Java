@@ -1,4 +1,4 @@
-import java.util.*;
+import java.util.Scanner;
 public class factorial_recursion {
     static int factorial(int n) {
         if (n > 1) {
