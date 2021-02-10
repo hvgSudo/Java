@@ -18,23 +18,29 @@ public class Fib_fact {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int choice, number, j = 0;
-        System.out.println("1. Factorial");
-        System.out.println("2. Fibonacci series");
-        System.out.print("Enter your choice: ");
-        choice = sc.nextInt();
-        if (choice == 1) {
-            System.out.print("Enter the number to find the factorial: ");
-            number = sc.nextInt();
-            System.out.println("The factorial of " + number + " is " + factorial(number));
-        } else if (choice == 2) {
-            System.out.print("Enter how many digits do you want to see from the Fibonacci series: ");
-            number = sc.nextInt();
-            System.out.println("The first " + number + " fibonacci series are");
-            for (int i = 0; i < number; i++) {
-                System.out.print(fibonacci(j) + " ");
-                j = j + 1;
+        char ch;
+        do {
+            System.out.println("1. Factorial");
+            System.out.println("2. Fibonacci series");
+            System.out.print("Enter your choice: ");
+            choice = sc.nextInt();
+            if (choice == 1) {
+                System.out.print("Enter the number to find the factorial: ");
+                number = sc.nextInt();
+                System.out.println("The factorial of " + number + " is " + factorial(number));
+            } else if (choice == 2) {
+                System.out.print("Enter how many digits do you want to see from the Fibonacci series: ");
+                number = sc.nextInt();
+                System.out.println("The first " + number + " fibonacci series are");
+                for (int i = 0; i < number; i++) {
+                    System.out.print(fibonacci(j) + " ");
+                    j = j + 1;
+                }
             }
-        }
+            System.out.println();
+            System.out.print("Do you want to continue(y/n): ");
+            ch = sc.next().charAt(0);
+        }while (ch == 'y' || ch == 'Y');
         sc.close();
     }
 }
