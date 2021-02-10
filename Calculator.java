@@ -147,13 +147,13 @@ public class Calculator {
                     System.out.println(n_1 + " raised to " + n_2 + " = " + fun.power(n_1, n_2));
                     break;
                 case 7:
-                    System.out.println("Enter the data entries one by one and enter end to stop input");
+                    System.out.println("Enter the data entries one by one and enter 'end' to stop input");
                     data = sc.nextLine();
                     while (true) {
                         data = sc.nextLine();
-                        if (data.charAt(0) == 'e') {
+                        if (data.charAt(0) == 'e' && data.charAt(1) == 'n' && data.charAt(2) == 'd') 
                             break;
-                        } else {
+                        else {
                             n_1 = Integer.parseInt(data);
                             sum = sum + n_1;
                             j = j + 1;
