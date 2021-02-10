@@ -40,7 +40,7 @@ public class Calculator {
     public static void main(String[] args) {
         functions fun = new functions();
         Scanner sc = new Scanner(System.in);
-        int n, j = 0, a = 1;
+        int n, j = 0;
         float num, num_1;
         float result = 0;
         char ch;
@@ -111,14 +111,15 @@ public class Calculator {
                     break;
                 case 7:
                     System.out.print("Enter the data: ");
-                    while (a == 1) {
+                    while (data != "end") {
                         data = sc.nextLine();
-                        if (data.equals("end"))
-                            break;
-                        else {
+                        try {
                             array[j] = Integer.parseInt(data);
-                            j = j + 1;
+                        } catch(Exception e) {
+                            data = "end";
+                            continue;
                         }
+                        j = j + 1;
                     }
                     result = fun.mean(j, array);
                     System.out.println("The meam of the given data: " + result);
