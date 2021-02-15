@@ -137,28 +137,31 @@ public class Calculator {
                 case 5:
                     System.out.print("Enter the number: ");
                     n_1 = sc.nextInt();
-                    System.out.println("The square root of " + n_1 + " is " + fun.sqrt(n_1));
+                    System.out.println("The square root of "
+                     + n_1 + " is " + fun.sqrt(n_1));
                     break;
                 case 6:
                     System.out.print("Enter the number: ");
                     n_1 = sc.nextInt();
                     System.out.print("Enter the power: ");
                     n_2 = sc.nextInt();
-                    System.out.println(n_1 + " raised to " + n_2 + " = " + fun.power(n_1, n_2));
+                    System.out.println(n_1 + " raised to "
+                     + n_2 + " = " + fun.power(n_1, n_2));
                     break;
                 case 7:
-                    System.out.println("Enter the data entries one by one and enter 'end' to stop input");
+                    System.out.println("Enter the data entries one"+
+                    " by one and enter 'end' to stop input");
                     data = sc.nextLine();
                     while (true) {
                         data = sc.nextLine();
-                        if (data.charAt(0) == 'e' && data.charAt(1) == 'n' && data.charAt(2) == 'd') 
+                        if (data.equals("end")) 
                             break;
                         else {
                             n_1 = Integer.parseInt(data);
                             sum = sum + n_1;
                             j = j + 1;
                         }
-                    }
+                    } 
                     result = fun.mean(j, sum);
                     System.out.println("The mean of the given data: " + result);
                     break;
@@ -168,9 +171,11 @@ public class Calculator {
                     System.out.print("Enter second number: ");
                     n_2 = sc.nextInt();
                     if (n_1 > n_2)
-                        System.out.println("GCD(" + n_1 + "," + n_2 + ") = " + fun.gcd(n_1, n_2));
+                        System.out.println("GCD(" + n_1 + "," 
+                        + n_2 + ") = " + fun.gcd(n_1, n_2));
                     else 
-                        System.out.println("GCD(" + n_2 + "," + n_1 + ") = " + fun.gcd(n_2, n_1));
+                        System.out.println("GCD(" + n_2 + ","
+                         + n_1 + ") = " + fun.gcd(n_2, n_1));
                     break;
                 default:
                     System.out.println("Wrong choice");
