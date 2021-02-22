@@ -3,29 +3,27 @@ import java.util.Scanner;
 public class trying {
 
         public static void main(String[] args) {
-                double ans_avg, n_1, sum = 0.0, count = 0.0;
+                double n_1, sum = 0.0, count = 0.0;
                 String data;
                 Scanner s = new Scanner(System.in);
                 Calc Obj1 = new Calc();
-                // data = s.nextLine();
+                data = s.nextLine();
                 while (true) {
                         data = s.nextLine();
                         Obj1.avg(data);
-                        /*if (data.equals("end"))
+                        if (data.equals("end"))
                                 break;
                         else {
                                 n_1 = Double.parseDouble(data);
                                 sum = sum + n_1;
                                 count = count + 1;
-                        }*/
+                        }
                 }
-                // s.close();
-                // ans_avg = Obj1.avg(count, sum);
-                // System.out.println("Result: " + ans_avg);
-               /* Obj1.test(1);
+                s.close();
+                Obj1.test(1);
                 Obj1.test(2);
                 Obj1.test(3);
-                Obj1.test(4);*/
+                Obj1.test(4);
         }
         
 }
