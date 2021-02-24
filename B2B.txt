@@ -1,0 +1,25 @@
+Usable right from booking to boarding the flight.
+
+Current plan/features:
+1. Book a flight
+2. Pay using the app using UPI, Netbanking for the booking.
+3. Database of the passenger
+4. Database of the flights
+5. Self Check in and baggage check in
+6. Notify about the flight status
+7. Display status of all the current flights
+    a. Boarding
+    b. Departed
+    c. Cancelled
+    d. Final Call
+    e. Delayed
+8. Displays baggage lane on landing
+
+Future plan/features:
+1. Make users wallet
+    a. Keep a record
+    b. Add or remove money
+    c. Transfer money directly through wallet
+2. Shopping Mart 
+3. Displays travel history
+4. Details of the flight crew

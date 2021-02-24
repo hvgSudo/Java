@@ -1,31 +1,28 @@
 import java.util.ArrayList;
 import java.util.Arrays;
-
-import javax.lang.model.util.ElementScanner14;
-
 import java.lang.Math;
 
 public class arrayAssignment {
     public static void main(String[] args) {
         int[] array = {1, 3, 5, 7, 0, 2, 4, 9, 8, 6};
-        ArrayList<Integer> arr = new ArrayList<>(Arrays.asList(1, 3, 5, 7, 0, 2, 4, 9, 8));
+        ArrayList<Integer> arr = new ArrayList<>(
+            Arrays.asList(1, 3, 5, 7, 0, 2, 4, 9, 8));
         int size = 10;
-        /* arrayEvenOdd(array, size);
+        arrayEvenOdd(array, size);
         System.out.println();
         arrayToArrayList(array, size);
         System.out.println(); 
         System.out.print("Second smallest element "+
             "in the array: "+ 
             secondSmallestElement(array, size)); 
-        arrayListToArray(arr); */
-        for (int a : array)
-            System.out.print(a +" ");
+        arrayListToArray(arr); 
         System.out.println();
         System.out.println(smallestDistance(array, size));
-        System.out.println("Peak element: "+ peakElement(array, size));
+        System.out.println("Peak element: "+ 
+            peakElement(array, size));
     }
 
-    /* public static void arrayEvenOdd(int[] array, int size) {
+    public static void arrayEvenOdd(int[] array, int size) {
         int[] even = new int[10];
         int[] odd = new int[10];
         int count1 = 0, count2 = 0;
@@ -39,10 +36,29 @@ public class arrayAssignment {
         }
         System.out.println();
         System.out.print("The even array is: ");
-        System.out.println(Arrays.toString(even));
+        for (int i = 0; i < count1; i++)
+            System.out.print(even[i] +" ");
         System.out.print("The odd array is: ");
-        System.out.println(Arrays.toString(odd));
-        System.out.println(smallestDistance(array, size));
+        for (int i = 0; i < count2; i++)
+            System.out.print(odd[i] +" ");
+    }
+
+    public static int smallestDistance(int[] array, int size) {
+        int smallest = Math.abs(array[0] - array[1]);
+        int smallest1 = 0, x = 0, y = 0;
+        for (int i = 1; i < size - 1; i++) {
+            smallest1 = Math.abs(array[i] - array[i + 1]);
+            if (smallest1 < smallest) {
+                x = array[i];
+                y = array[i + 1];
+                smallest = smallest1;
+            }
+            else
+                continue;
+        }
+        System.out.print(x +" and "+ y +" have the smallest"
+            +" distance ");
+        return smallest;
     }
 
     public static int secondSmallestElement(int[] array, 
@@ -68,34 +84,15 @@ public class arrayAssignment {
     }
 
     public static void arrayListToArray(ArrayList<Integer> arr) {
+        int count = 0;
         int[] array = new int[arr.size()];
         for (int i : arr)
-            array[i] = i;
-        System.out.println("Array List: ");
-        for (int a : arr)
-            System.out.print(a);
+            array[count++] = i;
+        System.out.println("Array List: "+ arr);
         System.out.println();
         System.out.println("Converted to Array: ");
         System.out.println(Arrays.toString(array));
-    } */
-
-    public static int smallestDistance(int[] array, int size) {
-        int smallest = Math.abs(array[0] - array[1]);
-        int smallest1 = 0, x = 0, y = 0;
-        for (int i = 1; i < size - 1; i++) {
-            smallest1 = Math.abs(array[i] - array[i + 1]);
-            if (smallest1 < smallest) {
-                x = array[i];
-                y = array[i + 1];
-                smallest = smallest1;
-            }
-            else
-                continue;
-        }
-        System.out.print(x +" and "+ y +" have the smallest"
-            +" distance ");
-        return smallest;
-    }
+    } 
 
     public static int peakElement(int[] array, int size) {
         int peak = -1, peak1 = -1, peak2 = -1;
@@ -108,11 +105,16 @@ public class arrayAssignment {
                     array[i] > array[i + 1])
                 peak = array[i];
         }
-        if (peak > peak1 && peak> peak2)
+        if (peak > peak1 && peak > peak2)
             return peak;
         else if (peak1 > peak && peak1 > peak2)
             return peak1;
         else
             return peak2;
     }
+
+    public static void bubbleSelectionSort(int[] array, 
+        int size) {
+        
+    }      
 }
