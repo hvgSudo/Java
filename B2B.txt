@@ -1,4 +1,4 @@
-Usable right from booking to boarding the flight.
+The software functions right from booking to boarding the flight.
 
 Current plan/features:
 1. Book a flight

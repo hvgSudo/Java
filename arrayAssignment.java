@@ -3,23 +3,24 @@ import java.util.Arrays;
 import java.lang.Math;
 
 public class arrayAssignment {
+    public ArrayList<Integer> arr = new ArrayList<>(
+        Arrays.asList(1, 3, 5, 7, 0, 2, 4, 9, 8));
     public static void main(String[] args) {
         int[] array = {1, 3, 5, 7, 0, 2, 4, 9, 8, 6};
-        ArrayList<Integer> arr = new ArrayList<>(
-            Arrays.asList(1, 3, 5, 7, 0, 2, 4, 9, 8));
         int size = 10;
         arrayEvenOdd(array, size);
         System.out.println();
         arrayToArrayList(array, size);
         System.out.println(); 
-        System.out.print("Second smallest element "+
+        System.out.println("Second smallest element "+
             "in the array: "+ 
             secondSmallestElement(array, size)); 
-        arrayListToArray(arr); 
+        arrayListToArray(); 
         System.out.println();
         System.out.println(smallestDistance(array, size));
         System.out.println("Peak element: "+ 
             peakElement(array, size));
+        bubbleSelectionSort();
     }
 
     public static void arrayEvenOdd(int[] array, int size) {
@@ -77,20 +78,21 @@ public class arrayAssignment {
     }
 
     public static void arrayToArrayList(int[] array, int size) {
-        ArrayList<Integer> arr = new ArrayList<Integer>(size);
+        ArrayList<Integer> list = new ArrayList<Integer>(size);
         for (int i = 0; i < size; i++) 
-            arr.add(array[i]);
-        System.out.println("Array list is: " +arr);
+            list.add(array[i]);
+        System.out.println("Array list is: "+ list);
     }
 
-    public static void arrayListToArray(ArrayList<Integer> arr) {
+    public static void arrayListToArray() {
+        arrayAssignment a = new arrayAssignment();
         int count = 0;
-        int[] array = new int[arr.size()];
-        for (int i : arr)
+        int[] array = new int[a.arr.size()];
+        for (int i : a.arr)
             array[count++] = i;
-        System.out.println("Array List: "+ arr);
+        System.out.println("Array List: "+ a.arr);
         System.out.println();
-        System.out.println("Converted to Array: ");
+        System.out.print("Converted to Array: ");
         System.out.println(Arrays.toString(array));
     } 
 
@@ -113,8 +115,53 @@ public class arrayAssignment {
             return peak2;
     }
 
-    public static void bubbleSelectionSort(int[] array, 
-        int size) {
-        
-    }      
+    public static void bubbleSelectionSort() {
+        arrayAssignment aa = new arrayAssignment();
+        int temp = 0, size = aa.arr.size();
+        ArrayList<Integer> dummy = new ArrayList<Integer>(size);
+        dummy = aa.arr;
+        System.out.println("Using bubble sort");
+        for (int i = 0; i < size; i++) {
+            System.out.println(dummy);
+            for (int j = i; j < size - 1; j++) {
+                if (dummy.get(j) > dummy.get(j + 1)) {
+                    temp = dummy.get(j);
+                    dummy.set(j, dummy.get(j + 1));
+                    dummy.set(j + 1, temp);
+                }
+            }
+        }
+        System.out.println("The sorted list is: "+ dummy);
+        System.out.println("Using Quick Sort");
+        quickSort(size, 0, size - 1);
+    }   
+    
+    public static void quickSort(int size, int start, int last) {
+        arrayAssignment a = new arrayAssignment();
+        int mid = 0;
+        if (start < last) {
+            mid = sortPartition(a, start, last, size);
+            quickSort(size, start, mid - 1);
+            quickSort(size, mid + 1, last);
+        }
+        System.out.println("The sorted list is: "+ a.arr);
+    }
+
+    public static int sortPartition(arrayAssignment a,
+        int start, int last, int size) {
+        int count = start - 1, temp = 0;
+        int pivot = a.arr.get(last);
+        for (int i = start; i < last; i++) {
+            if (a.arr.get(i) <= pivot) {
+                count ++;
+                temp = a.arr.get(count);
+                a.arr.set(count, a.arr.get(i));
+                a.arr.set(i, temp);
+            }
+        }
+        temp = a.arr.get(count + 1);
+        a.arr.set(count, a.arr.get(last));
+        a.arr.set(last, temp);
+        return (count + 1);
+    }
 }
