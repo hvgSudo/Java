@@ -2,7 +2,7 @@ import java.util.Scanner;
 import java.io.InputStreamReader;
 import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.DataInputStream;
+// import java.io.DataInputStream;
 
 public class Fib_fact {
 
@@ -23,7 +23,7 @@ public class Fib_fact {
         Scanner in = new Scanner(System.in);
         BufferedReader reader =new BufferedReader(
             new InputStreamReader(System.in));
-        DataInputStream data = new DataInputStream(System.in);
+        // DataInputStream data = new DataInputStream(System.in);
         int choice, number, j = 0;
         String ch;
         do {
@@ -39,7 +39,7 @@ public class Fib_fact {
             } else if (choice == 2) {
                 System.out.print("Enter how many digits do you"+
                     " want to see from the Fibonacci series: ");
-                number = Integer.parseInt(data.readLine()); // using DataInputStream
+                number = Integer.parseInt(in.nextLine()); // using DataInputStream
                 System.out.println("The first " + number + 
                     " fibonacci series are");
                 for (int i = 0; i < number; i++) {
