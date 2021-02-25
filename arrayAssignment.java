@@ -4,23 +4,26 @@ import java.lang.Math;
 
 public class arrayAssignment {
     public ArrayList<Integer> arr = new ArrayList<>(
-        Arrays.asList(1, 3, 5, 7, 0, 2, 4, 9, 8));
+        Arrays.asList(1, 3, 5, 7, 0, 2, 4, 9, 8, 6));
     public static void main(String[] args) {
+        arrayAssignment a = new arrayAssignment();
         int[] array = {1, 3, 5, 7, 0, 2, 4, 9, 8, 6};
         int size = 10;
         arrayEvenOdd(array, size);
         System.out.println();
-        arrayToArrayList(array, size);
-        System.out.println(); 
+        System.out.println(smallestDistance(array, size));
+        System.out.println();
         System.out.println("Second smallest element "+
             "in the array: "+ 
             secondSmallestElement(array, size)); 
+        System.out.println();
+        arrayToArrayList(array, size);
         arrayListToArray(); 
         System.out.println();
-        System.out.println(smallestDistance(array, size));
         System.out.println("Peak element: "+ 
             peakElement(array, size));
-        bubbleSelectionSort();
+        System.out.println();
+        bubbleSelectionSort(a);
     }
 
     public static void arrayEvenOdd(int[] array, int size) {
@@ -36,15 +39,20 @@ public class arrayAssignment {
                 odd[count2++] = array[i];
         }
         System.out.println();
-        System.out.print("The even array is: ");
+        System.out.print("The even array is ");
         for (int i = 0; i < count1; i++)
             System.out.print(even[i] +" ");
-        System.out.print("The odd array is: ");
+        System.out.println();
+        System.out.print("The odd array is ");
         for (int i = 0; i < count2; i++)
             System.out.print(odd[i] +" ");
     }
 
     public static int smallestDistance(int[] array, int size) {
+        System.out.print("The array is ");
+        for (int i : array)
+            System.out.print(i +" ");
+        System.out.println();
         int smallest = Math.abs(array[0] - array[1]);
         int smallest1 = 0, x = 0, y = 0;
         for (int i = 1; i < size - 1; i++) {
@@ -65,8 +73,8 @@ public class arrayAssignment {
     public static int secondSmallestElement(int[] array, 
         int size) {
         int temp = 0;
-        for (int i = 0; i < size; i++) {
-            for (int j = i; j < size - 1; j++) {
+        for (int i = 0; i < size - 1; i++) {
+            for (int j = 0; j < size - i - 1; j++) {
                 if (array[j] > array[j + 1]) {
                     temp = array[j];
                     array[j] = array[j + 1];
@@ -79,9 +87,13 @@ public class arrayAssignment {
 
     public static void arrayToArrayList(int[] array, int size) {
         ArrayList<Integer> list = new ArrayList<Integer>(size);
+        System.out.print("The array is ");
+        for (int i : array)
+            System.out.print(i +" ");
+        System.out.println();
         for (int i = 0; i < size; i++) 
             list.add(array[i]);
-        System.out.println("Array list is: "+ list);
+        System.out.println("Array list is "+ list);
     }
 
     public static void arrayListToArray() {
@@ -90,13 +102,19 @@ public class arrayAssignment {
         int[] array = new int[a.arr.size()];
         for (int i : a.arr)
             array[count++] = i;
-        System.out.println("Array List: "+ a.arr);
         System.out.println();
-        System.out.print("Converted to Array: ");
-        System.out.println(Arrays.toString(array));
+        System.out.println("Array List is "+ a.arr);
+        System.out.print("Array is ");
+        for (int i : array)
+            System.out.print(i +" ");
+        System.out.println();
     } 
 
     public static int peakElement(int[] array, int size) {
+        System.out.println("The array is ");
+        for (int i : array) 
+            System.out.print(i +" ");
+        System.out.println();
         int peak = -1, peak1 = -1, peak2 = -1;
         if (array[0] > array[1])
             peak1 = array[0];
@@ -115,15 +133,13 @@ public class arrayAssignment {
             return peak2;
     }
 
-    public static void bubbleSelectionSort() {
-        arrayAssignment aa = new arrayAssignment();
+    public static void bubbleSelectionSort(arrayAssignment aa) {
         int temp = 0, size = aa.arr.size();
-        ArrayList<Integer> dummy = new ArrayList<Integer>(size);
-        dummy = aa.arr;
+        ArrayList<Integer> dummy, dummy1 = new ArrayList<Integer>(size);
+        dummy = dummy1 = aa.arr;
         System.out.println("Using bubble sort");
-        for (int i = 0; i < size; i++) {
-            System.out.println(dummy);
-            for (int j = i; j < size - 1; j++) {
+        for (int i = 0; i < size - 1; i++) {
+            for (int j = 0; j < size - i - 1; j++) {
                 if (dummy.get(j) > dummy.get(j + 1)) {
                     temp = dummy.get(j);
                     dummy.set(j, dummy.get(j + 1));
@@ -131,20 +147,22 @@ public class arrayAssignment {
                 }
             }
         }
-        System.out.println("The sorted list is: "+ dummy);
+        System.out.println("The sorted list is "+ dummy);
+        System.out.println("For the list "+ aa.arr);
+        System.out.println();
         System.out.println("Using Quick Sort");
-        quickSort(size, 0, size - 1);
+        quickSort(aa, size, 0, size - 1);
+        System.out.println("The sorted list is "+ aa.arr);
+        System.out.println("For the list "+ dummy1);
     }   
     
-    public static void quickSort(int size, int start, int last) {
-        arrayAssignment a = new arrayAssignment();
+    public static void quickSort(arrayAssignment a, int size, int start, int last) {
         int mid = 0;
         if (start < last) {
             mid = sortPartition(a, start, last, size);
-            quickSort(size, start, mid - 1);
-            quickSort(size, mid + 1, last);
-        }
-        System.out.println("The sorted list is: "+ a.arr);
+            quickSort(a, size, start, mid - 1);
+            quickSort(a, size, mid + 1, last);
+        } 
     }
 
     public static int sortPartition(arrayAssignment a,
@@ -160,7 +178,7 @@ public class arrayAssignment {
             }
         }
         temp = a.arr.get(count + 1);
-        a.arr.set(count, a.arr.get(last));
+        a.arr.set(count + 1, a.arr.get(last));
         a.arr.set(last, temp);
         return (count + 1);
     }
