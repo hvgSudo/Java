@@ -1,45 +1,43 @@
 import java.util.Scanner;
 import java.util.ArrayList;
 
-class Student {
-    private int prn;
-    private String name;
-    Student(String name, int prn) {
-        this.prn = prn;
-        this.name = name;
-    }
-    public void input (String name, int prn) {
-        this.prn = prn;
-        this.name = name;
-    }
-    public void display() {
-        System.out.println("PRN: "+ prn
-            +" Name: "+ name);
-    }
-}
 public class Main {
 
     public static void main(String[] args) {
-        int prn, strength;
-        String name;
+        StudentOperations op = new StudentOperations();
+        boolean exit = false;
+        int action;
         Scanner sc = new Scanner(System.in);
-        System.out.print("How many students are there in the"
-            +" class: ");
-        strength = sc.nextInt();
-        ArrayList<Student> list = new ArrayList<Student>(
-            strength);
-        for (int i = 0; i < strength; i++) {
-            System.out.print("Enter the prn of student "+ 
-                (i + 1) +": ");
-            prn = sc.nextInt();
-            sc.nextLine();
-            System.out.print("Enter the name of student "+
-                (i + 1) +": ");
-            name = sc.nextLine();
-            list.add(new Student(name, prn));
+        while (!exit) {
+            printActionMenu();
+            System.out.println("Enter your "+
+                "choice of action (5 to view "+
+                "the menu): ");
+            action = sc.nextInt();
+            switch(action) {
+                case 1:
+                    op.displayDetails();
+                    break;
+                case 2:
+                    op.inputDetails();
+                    break;
+                case 5:
+                    printActionMenu();
+                    break;
+                case 6:
+                    exit = true;
+                    break;
+            }
         }
-        for (int i = 0; i < strength; i++)
-            list.get(i).display();
         sc.close();
+    }
+
+    public static void printActionMenu() {
+        System.out.println("1. Display the list"+
+            "2. Add students to the list"+
+            "3. Update the details of the students"+
+            "4. Delete record of students"+
+            "5. View the menu"+
+            "6. Exit");
     }
 }
