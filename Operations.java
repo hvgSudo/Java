@@ -1,13 +1,25 @@
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+
+class comparatorImplemtation implements Comparator<Student> {
+    @Override
+    public int compare(Student o1, Student o2) {
+        if (o1.getTotal() > o2.getTotal())
+            return 1;
+        return 0;
+    }
+}
 
 public class Operations {
-    private ArrayList<Student> list;
+    private ArrayList<Student> list, sortedList;
     private ArrayList<DOB> list1;
     private DOB d = new DOB();
 
     Operations() {
-        list = new ArrayList<Student>();
-        list1 = new ArrayList<DOB>();
+        this.list = new ArrayList<Student>();
+        this.sortedList = list;
+        this.list1 = new ArrayList<DOB>();
     }
 
     void printStudents() {
@@ -93,6 +105,25 @@ public class Operations {
         if (position >= 0)
             return this.list.get(position);
         return null;
+    }
+
+    void sortOnMarks() {
+        this.sortedList = this.list;
+        Comparator<Student> sortOnMarks = new comparatorImplemtation();
+        Collections.sort(sortedList, sortOnMarks);
+        for (int i = 0; i < this.sortedList.size(); i++)
+            System.out.println((i+1) +"PRN -> "+
+                    this.sortedList.get(i).getPrn()+
+                    "\tName -> "+
+                    this.sortedList.get(i).getName()+
+                    "\nTotal Marks -> "+
+                    this.sortedList.get(i).getTotal()+
+                    "\nPercentage obtained -> "+
+                    this.sortedList.get(i).getPercentage()+
+                    "\nGPA obtained -> "+
+                    this.sortedList.get(i).getGPA()+
+                    "\nGrade obtained -> "+
+                    this.sortedList.get(i).getGrade());
     }
 
     void gradeCount() {

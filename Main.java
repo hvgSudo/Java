@@ -11,6 +11,7 @@ public class Main {
         int action;
         Scanner sc = new Scanner(System.in);
         while (!exit) {
+            System.out.println();
             printActionMenu();
             System.out.print("Enter your "+
                     "choice of action: ");
@@ -35,6 +36,9 @@ public class Main {
                     op.gradeCount();
                     break;
                 case 7:
+                    op.sortOnMarks();
+                    break;
+                case 8:
                     exit = true;
                     break;
             }
@@ -184,6 +188,7 @@ public class Main {
                 "4. Delete record of students\n"+
                 "5. Search for a specific student\n"+
                 "6. See the grade count of all the students\n"+
-                "7. Exit\n");
+                "7. Get a sorted list of students on the basis of marks\n"+
+                "8. Exit\n");
     }
 }
