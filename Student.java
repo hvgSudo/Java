@@ -4,24 +4,32 @@ public class Student {
     private double[] marks;
     private String[] subjects;
     private double total;
+    DOB dob = new DOB();
 
     public Student(String name, String prn,
-                   String[] subjects, double[] marks) {
+                   String[] subjects, double[] marks,
+                   String date, String month, String year) {
         this.prn = prn;
         this.name = name;
         this.marks = marks;
         this.subjects = subjects;
         this.total = 0;
+        dob.setDOB(date, month, year);
     }
 
     public String getName() { return name; }
     public String getPrn() { return prn; }
+    public String getDOB() { return dob.getDOB(); }
 
     public static Student createStudent(String name,
                                         String prn,
                                         String[] subjects,
-                                        double[] marks) {
-        return new Student(name, prn, subjects, marks);
+                                        double[] marks,
+                                        String date,
+                                        String month,
+                                        String year) {
+        return new Student(name, prn, subjects, marks,
+                date, month, year);
     }
 
     public double getTotal() {

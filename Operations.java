@@ -2,15 +2,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 
-class comparatorImplemtation implements Comparator<Student> {
-    @Override
-    public int compare(Student o1, Student o2) {
-        if (o1.getTotal() > o2.getTotal())
-            return 1;
-        return 0;
-    }
-}
-
 public class Operations {
     private ArrayList<Student> list, sortedList;
     private ArrayList<DOB> list1;
@@ -18,7 +9,7 @@ public class Operations {
 
     Operations() {
         this.list = new ArrayList<Student>();
-        this.sortedList = list;
+        this.sortedList = new ArrayList<Student>();
         this.list1 = new ArrayList<DOB>();
     }
 
@@ -31,9 +22,7 @@ public class Operations {
                     "Name -> "+
                     list.get(i).getName());
             System.out.println("Date of Birth -> "+
-                    list1.get(i).getDate() +"-"+
-                    list1.get(i).getMonth() +"-"+
-                    list1.get(i).getYear());
+                    list.get(i).getDOB());
             System.out.println("Total marks -> "+
                     list.get(i).getTotal() +" out of 500");
             System.out.println("Percentage obtained -> "+
@@ -42,14 +31,14 @@ public class Operations {
                     list.get(i).getGPA());
             System.out.println("Grade obtained -> "+
                     list.get(i).getGrade());
+            System.out.println("---------------------------------------");
         }
     }
 
-    boolean addStudent(Student student, DOB dob) {
+    boolean addStudent(Student student) {
         if (findStudent(student.getName()) >= 0)
             return false;
         list.add(student);
-        list1.add(dob);
         return true;
     }
 
@@ -67,8 +56,7 @@ public class Operations {
         return false;
     }
 
-    boolean updateStudent(Student oldDetail, Student newDetail,
-                          DOB d) {
+    boolean updateStudent(Student oldDetail, Student newDetail) {
         int foundStudent = findStudent(oldDetail);
         if (foundStudent < 0) {
             System.out.println(oldDetail.getName() +
@@ -80,7 +68,6 @@ public class Operations {
             return false;
         }
         this.list.set(foundStudent, newDetail);
-        this.list1.set(foundStudent, d);
         System.out.println(oldDetail.getName() +", was"+
                 " replaced with "+ newDetail.getName());
         return true;
@@ -108,22 +95,30 @@ public class Operations {
     }
 
     void sortOnMarks() {
-        this.sortedList = this.list;
-        Comparator<Student> sortOnMarks = new comparatorImplemtation();
-        Collections.sort(sortedList, sortOnMarks);
-        for (int i = 0; i < this.sortedList.size(); i++)
-            System.out.println((i+1) +"PRN -> "+
-                    this.sortedList.get(i).getPrn()+
-                    "\tName -> "+
-                    this.sortedList.get(i).getName()+
-                    "\nTotal Marks -> "+
-                    this.sortedList.get(i).getTotal()+
-                    "\nPercentage obtained -> "+
-                    this.sortedList.get(i).getPercentage()+
-                    "\nGPA obtained -> "+
-                    this.sortedList.get(i).getGPA()+
-                    "\nGrade obtained -> "+
+        for (Student s : list) {
+            sortedList.add(s);
+        }
+        Collections.sort(sortedList, new Comparator<Student>() {
+            @Override
+            public int compare(Student o1, Student o2) {
+                return Double.valueOf(o2.getTotal()).compareTo(o1.getTotal());
+            }
+        });
+        for (int i = 0; i < this.sortedList.size(); i++) {
+            System.out.println((i + 1) + ". PRN -> " +
+                    this.sortedList.get(i).getPrn() +
+                    "\tName -> " +
+                    this.sortedList.get(i).getName() +
+                    "\nTotal Marks -> " +
+                    this.sortedList.get(i).getTotal() +
+                    "\nPercentage obtained -> " +
+                    this.sortedList.get(i).getPercentage() +
+                    "\nGPA obtained -> " +
+                    this.sortedList.get(i).getGPA() +
+                    "\nGrade obtained -> " +
                     this.sortedList.get(i).getGrade());
+            System.out.println("---------------------------");
+        }
     }
 
     void gradeCount() {

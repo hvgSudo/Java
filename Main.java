@@ -4,7 +4,7 @@ public class Main {
 
     private static Scanner sc = new Scanner(System.in);
     private static Operations op = new Operations();
-    private static DOB dob = new DOB();
+    // private static DOB dob = new DOB();
 
     public static void main(String[] args) {
         boolean exit = false;
@@ -70,9 +70,9 @@ public class Main {
             sc.nextLine();
         }
         Student student = Student.createStudent(name, prn,
-                subjects, marks);
-        DOB d = DOB.enterDOB(date, month, year);
-        if (op.addStudent(student, d))
+                subjects, marks, date, month, year);
+        // DOB d = DOB.enterDOB(date, month, year);
+        if (op.addStudent(student))
             System.out.println("New student "+ name
                     +" added");
         else
@@ -111,9 +111,9 @@ public class Main {
             sc.nextLine();
         }
         Student updatedStudent = Student.createStudent(studentName,
-                prn, subjects, marks);
-        DOB d = DOB.enterDOB(date, month, year);
-        if (op.updateStudent(isExisting, updatedStudent, d))
+                prn, subjects, marks, date, month, year);
+        // DOB d = DOB.enterDOB(date, month, year);
+        if (op.updateStudent(isExisting, updatedStudent))
             System.out.println("Successfully updated the record");
         else
             System.out.println("Error updating the record");
