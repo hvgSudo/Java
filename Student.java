@@ -76,12 +76,4 @@ public class Student {
         System.out.println("Grade obtained -> "+
                 getGrade());
     }
-<<<<<<< HEAD
 }
-=======
-<<<<<<< HEAD
-}
-=======
-}
->>>>>>> 5ad223c3aef30e35323e2776352a33186419d59f
->>>>>>> 495e59a2ce5c328f6582b2ad1fcff2571d787cd2
