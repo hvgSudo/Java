@@ -14,4 +14,8 @@ public class Student {
         System.out.println("PRN: "+ prn
             +" Name: "+ name);
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 5ad223c3aef30e35323e2776352a33186419d59f
