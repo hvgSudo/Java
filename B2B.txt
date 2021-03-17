@@ -1,25 +1,33 @@
 The software functions right from booking to boarding the flight.
 
 Current plan/features:
-1. Book a flight
-2. Pay using the app using UPI, Netbanking for the booking.
+1. Book a flight based on availability.
+2. Generate ticket and generate PNR and give bill.
+	Airline, date, time, passengerIndex -> Unique number/PNR
 3. Database of the passenger
 4. Database of the flights
-5. Self Check in and baggage check in
-6. Notify about the flight status
+5. Self Check in and baggage check in (optional)
+6. Notify about the flight status (sms and email facility)
 7. Display status of all the current flights
     a. Boarding
     b. Departed
     c. Cancelled
     d. Final Call
     e. Delayed
-8. Displays baggage lane on landing
+8. Displays baggage lane on landing (optional)
+
+3, 4, 7 -> passenger login and admin login
 
 Future plan/features:
 1. Make users wallet
     a. Keep a record
     b. Add or remove money
     c. Transfer money directly through wallet
-2. Shopping Mart 
+2. Sky Shopping Mart 
 3. Displays travel history
 4. Details of the flight crew
+
+Suggestions:
+1. Use similar layout as a calculator has.
+2. Interface similar to redbus.
+3. 5 to 6 routes for flights. Flight, 
