@@ -30,5 +30,6 @@ public class IteratorUse {
             }
         }
         stringListIterator.add(newCity);
+        return true;
     }
 }
