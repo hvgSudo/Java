@@ -8,7 +8,8 @@ public class JDBCTutorial {
                 "jdbc:ucanaccess://<pathOfDatabaseWith\\InsteadOf\>");
             System.out.println("Connection Successful");
             Statement st = connection.createStatement();
-            ResultSet rs = st.executeQuery("Select * from tblStudent");
+            ResultSet rs = st.executeQuery("Select * from "+
+                "tblStudent where Field1='Content'");
             while (rx.nexT()) {
                 System.out.println(rs.getInt("Field1") +"\t"+
                     rs.getString("Field2") +"\t"+
