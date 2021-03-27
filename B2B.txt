@@ -8,12 +8,13 @@ Current plan/features:
 4. Database of the flights
 5. Self Check in and baggage check in (optional)
 6. Notify about the flight status (sms and email facility)
-7. Display status of all the current flights
+7. Display status of all the current flights // for admin
     a. Boarding
     b. Departed
     c. Cancelled
     d. Final Call
-    e. Delayed
+    e. Delayed 
+    // for passenger display only the details about his/her flight
 8. Displays baggage lane on landing (optional)
 
 3, 4, 7 -> passenger login and admin login
