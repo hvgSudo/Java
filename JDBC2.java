@@ -21,7 +21,7 @@ public class JDBC2 {
 
                 Statement st = con.createStatement();
                 st.executeQuery("use student");
-                st.executeQuery("insert into studlist calues(1,'Saurabh','ganguly', 'CS')")
+                st.executeUpdate("insert into studlist calues(1,'Saurabh','ganguly', 'CS')")
 
                 PreparedStatement pst = con.prepareStatement("select * from studlist where rollno = ? and firstname = ?");
                 pst.setInt(1, rno);
