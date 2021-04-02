@@ -6,6 +6,7 @@ public class JDBCSQL {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver"); // Loaded drivers
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306", "root", "toor");
+            System.out.prinntln("Connected successfully");
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
