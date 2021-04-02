@@ -16,9 +16,16 @@ public class JDBC2 {
                 System.out.println("Connected successfully");
                 System.out.println("Enter the roll number to search for: ");
                 int rno = in.nextInt();
+                System.out.println("Enter the first name to search: ");
+                String name = in.nextLine();
 
-                PreparedStatement pst = con.prepareStatement("select * from studlist where rollno = ?");
+                Statement st = con.createStatement();
+                st.executeQuery("use student");
+                st.executeQuery("insert into studlist calues(1,'Saurabh','ganguly', 'CS')")
+
+                PreparedStatement pst = con.prepareStatement("select * from studlist where rollno = ? and firstname = ?");
                 pst.setInt(1, rno);
+                pst.setString(2, name);
 
                 ResultSet rs = pst.executeQuery();
                 while (rs.next()) {
