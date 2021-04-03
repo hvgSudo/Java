@@ -3,7 +3,7 @@ The software functions right from booking to boarding the flight.
 Current plan/features:
 1. Book a flight based on availability.
 2. Generate ticket and generate PNR and give bill.
-	Airline, date, time, passengerIndex -> Unique number/PNR
+	Airline, date, time, passengerIndex -> Unique number/PNR, Name
 3. Database of the passenger
 4. Database of the flights
 5. Self Check in and baggage check in (optional)
