@@ -10,6 +10,11 @@ class Dog {
 }
 
 public class GarbageCollection {
+
+    public void finalize() {
+        System.out.println("Garbage collected");
+    }
+
     public static void main(String[] args) {
         Dog d1 = new Dog("Jacky");
         Dog d2 = new Dog("Brutus");
@@ -38,9 +43,9 @@ public class GarbageCollection {
 
         System.out.println("\nAfter automatic garbage collection\n");
 
-        System.out.println("D1 -> "+ d4);
-        System.out.println("D2 -> "+ d4);
-        System.out.println("D3 -> "+ d4);
+        System.out.println("D1 -> "+ d1);
+        System.out.println("D2 -> "+ d2);
+        System.out.println("D3 -> "+ d3);
         System.out.println("D4 -> "+ d4);
     }
  }
