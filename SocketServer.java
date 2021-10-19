@@ -8,9 +8,15 @@ public class SocketServer {
     private Socket socket = null;
     private ServerSocket server = null;
     private DataInputStream in = null;
+    private int port;
 
     // Constructor with port
     public SocketServer(int port) {
+        this.port = port;
+    }
+
+    // Accepting client
+    public Socket accept(int port) {
         // starts server and waits for a connection
         try {
             server = new ServerSocket(port);
@@ -44,6 +50,7 @@ public class SocketServer {
         } catch (IOException i) {
             System.out.println(i);
         }
+        return socket;
     }
 
     // Main method
