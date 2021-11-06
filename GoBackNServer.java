@@ -34,7 +34,24 @@ public class GoBackNServer {
             out.flush();
         } else {
             for (int i = 0; i < p; ++i) {
-                
+                if (i == 2) {
+                    System.out.println("Reading frame number: "+ i);
+                } else {
+                    System.out.println("Sending frame number: "+ i);
+                    out.write(i);
+                    out.flush();
+                    System.out.println("Waiting for acknowledgement.");
+                    try {
+                        Thread.sleep(7000);
+                    } catch (Exception e) {
+                        System.out.println(e.getMessage());
+                    }
+                    int a = in.read();
+                    if (a != 255) {
+                        System.out.println("Received acknowledgement for frame number: "+ i +" as "+ a);
+                        f[i] = true;
+                    }
+                }
             }
         }
     }

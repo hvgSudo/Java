@@ -24,20 +24,24 @@ public class GoBackNClient {
         if (choice == 0) {
             for (j = 0; j < c; ++j) {
                 i = in.read();
-                System.out.println("Received fram number: "+ i);
+                System.out.println("Received frame number: "+ i);
                 System.out.println("Sending ackowledgement for frame number: "+ i);
                 out.write(i);
                 out.flush();
             }
             out.flush();
         } else {
-            for (j = 0; j < 0; ++j) { 
+            for (j = 0; j < c; ++j) { 
                 i = in.read();
                 if (i == check) {
                     System.out.println("i = "+ i +" check = "+ check);
                     System.out.println("Received frame number = "+ i);
                     System.out.println("Sending ackowledgement for fram number = "+ i);
                     out.write(i);
+                    ++check;
+                } else {
+                    --j;
+                    System.out.println("Discarded frame number: "+ i);
                 }
             }
         }
