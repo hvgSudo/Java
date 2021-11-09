@@ -5,9 +5,9 @@ import java.util.*;
 public class GoBackNServer {
     public static void main(String[] args) throws IOException {
         System.out.println("\t\t Server");
-        System.out.println("Waiting for connection");
+        System.out.println("\tWaiting for connection");
         InetAddress addr = InetAddress.getByName("Localhost");
-        ServerSocket ss = new ServerSocket();
+        ServerSocket ss = new ServerSocket(500);
         Socket client = new Socket();
         client = ss.accept();
         DataInputStream in = new DataInputStream(client.getInputStream());
@@ -53,6 +53,24 @@ public class GoBackNServer {
                     }
                 }
             }
+            for (int a = 0; a < p; ++a) {
+                if (f[a] == false) {
+                    System.out.println("Resending frame: "+ a);
+                    out.write(a);
+                    out.flush();
+                    System.out.println("Waiting for acknowledgement");
+                    try {
+                        Thread.sleep(5000);
+                    } catch (Exception e) {
+                        System.out.println(e.getMessage());
+                    }
+                    int b = in.read();
+                    System.out.println("Received Acknowledgement for frame number: "+ a +" as "+ b);
+                    f[a] = true;
+                }
+            }
+            out.flush();
         }
+        in.close();
     }
 }

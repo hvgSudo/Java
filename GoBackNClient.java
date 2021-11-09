@@ -13,11 +13,11 @@ public class GoBackNClient {
         Scanner sc = new Scanner(System.in);
         System.out.println("\t\t Client");
         System.out.println("Connect");
-        System.out.println("Enter the number of frames to be requested to the server: ");
+        System.out.print("Enter the number of frames to be requested to the server: ");
         int c = sc.nextInt();
         out.write(c);
         out.flush();
-        System.out.println("Enter the type of transmission\nError = 1\nNo-Error = 0");
+        System.out.print("Enter the type of transmission\nError = 1\nNo-Error = 0: ");
         int choice = sc.nextInt();
         out.write(choice);
         int check = 0, i = 0, j = 0;
@@ -36,14 +36,20 @@ public class GoBackNClient {
                 if (i == check) {
                     System.out.println("i = "+ i +" check = "+ check);
                     System.out.println("Received frame number = "+ i);
-                    System.out.println("Sending ackowledgement for fram number = "+ i);
+                    System.out.println("Sending ackowledgement for frame number = "+ i);
                     out.write(i);
                     ++check;
                 } else {
                     --j;
                     System.out.println("Discarded frame number: "+ i);
+                    System.out.println("Sending negative acknowledgment");
+                    out.write(-1);
                 }
+                out.flush();
             }
+            in.close();
+            out.close();
+            System.out.println("Quiting");
         }
     }
 }
