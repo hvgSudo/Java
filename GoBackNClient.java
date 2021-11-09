@@ -47,6 +47,7 @@ public class GoBackNClient {
                 }
                 out.flush();
             }
+            System.out.println("Quiting");
             in.close();
             out.close();
             System.out.println("Quiting");

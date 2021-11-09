@@ -24,7 +24,7 @@ public class GoBackNServer {
                 out.flush();
                 System.out.println("Waiting for acknowledgement");
                 try {
-                    Thread.sleep(7000);
+                    Thread.sleep(3000);
                 } catch(Exception e) {
                     System.out.println(e.getMessage());
                 }
@@ -42,7 +42,7 @@ public class GoBackNServer {
                     out.flush();
                     System.out.println("Waiting for acknowledgement.");
                     try {
-                        Thread.sleep(7000);
+                        Thread.sleep(3000);
                     } catch (Exception e) {
                         System.out.println(e.getMessage());
                     }
@@ -60,7 +60,7 @@ public class GoBackNServer {
                     out.flush();
                     System.out.println("Waiting for acknowledgement");
                     try {
-                        Thread.sleep(5000);
+                        Thread.sleep(3000);
                     } catch (Exception e) {
                         System.out.println(e.getMessage());
                     }
@@ -72,5 +72,7 @@ public class GoBackNServer {
             out.flush();
         }
         in.close();
+        out.close();
+        System.out.println("Quiting");
     }
 }
