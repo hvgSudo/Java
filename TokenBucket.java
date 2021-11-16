@@ -1,25 +1,24 @@
 import java.util.Random;
 import java.util.Scanner;
 
-public class LeakyBucket {
+public class TokenBucket {
+    private static Random rand = new Random();
     static void solution(int bucketSize, int packetSize, int output) {
-        if (packetSize > bucketSize)
-            System.out.println("Bucket overflow");
-        else {
-            while (packetSize > output) {
-                System.out.println(output +" bytes outputed");
-                packetSize = packetSize - output;
-            }
-            if (packetSize > 0) {
-                System.out.println(packetSize +" bytes outputed");
-            }
+        int tokens = 0;
+        tokens = rand.nextInt(packetSize);
+        
+        while (tokens > packetSize) {
+            System.out.println(output +" bytes outputed");
+            packetSize = packetSize - output;
+        }
+        if (packetSize > 0) {
+            System.out.println(packetSize +" bytes outputed");
         }
     }
 
     public static void main(String[] args) {
         int output, packetSize, bucketSize, n;
         Scanner sc = new Scanner(System.in);
-        Random rand = new Random();
         System.out.print("Enter the bucket size(eg. 512): ");
         bucketSize = sc.nextInt();
         System.out.print("Enter the output rate: ");
