@@ -1,24 +1,34 @@
 import java.util.Random;
 import java.util.Scanner;
+import java.time.*;
 
 public class TokenBucket {
-    private static Random rand = new Random();
+    private int tokens;
+    private int time_unit;
+    private int forward_callback;
+    private int drop_callback;
+    private int bucket;
+    private LocalTime time;
+    TokenBucket(int tokens, int time_unit, int forward_callback, int drop_callback) {
+        this.tokens = tokens;
+        this.time_unit = time_unit;
+        this.forward_callback = forward_callback;
+        this.drop_callback = drop_callback;
+        this.bucket = tokens;
+    }
     static void solution(int bucketSize, int packetSize, int output) {
-        int tokens = 0;
-        tokens = rand.nextInt(packetSize);
-        
-        while (tokens > packetSize) {
-            System.out.println(output +" bytes outputed");
+        int token = bucketSize / output;    
+        while (packetSize > output) {
             packetSize = packetSize - output;
-        }
-        if (packetSize > 0) {
-            System.out.println(packetSize +" bytes outputed");
+            token = token - 1;
         }
     }
+
 
     public static void main(String[] args) {
         int output, packetSize, bucketSize, n;
         Scanner sc = new Scanner(System.in);
+        Random rand = new Random();
         System.out.print("Enter the bucket size(eg. 512): ");
         bucketSize = sc.nextInt();
         System.out.print("Enter the output rate: ");
