@@ -1,45 +1,69 @@
 import java.util.Random;
 import java.util.Scanner;
+
+import javax.lang.model.util.ElementScanner6;
+
 import java.time.*;
 
 public class TokenBucket {
-    private int tokens;
-    private int time_unit;
-    private int forward_callback;
-    private int drop_callback;
-    private int bucket;
-    private LocalTime time;
-    TokenBucket(int tokens, int time_unit, int forward_callback, int drop_callback) {
+    private static int tokens;
+    private static int time_unit;
+    private static int bucket;
+    private static int last_check;
+    
+    TokenBucket(int tokens, int time_unit) {
         this.tokens = tokens;
         this.time_unit = time_unit;
-        this.forward_callback = forward_callback;
-        this.drop_callback = drop_callback;
         this.bucket = tokens;
+        this.last_check = LocalTime.now().toSecondOfDay();
     }
-    static void solution(int bucketSize, int packetSize, int output) {
-        int token = bucketSize / output;    
-        while (packetSize > output) {
-            packetSize = packetSize - output;
-            token = token - 1;
+
+    private void handle(int packet) {
+        int current = LocalTime.now().toSecondOfDay();
+        int time_passed = current - last_check;
+        last_check = current;
+        
+        bucket = bucket + time_passed * (tokens / time_unit);
+
+        System.out.println("Bucket: "+ bucket);
+        System.out.println("Tokens: "+ tokens);
+
+        if (bucket > tokens)
+            bucket = tokens;
+        if (bucket < 1)
+            drop(packet);
+        else {
+            bucket = bucket - 1;
+            forward(packet);
         }
     }
 
+    private static void forward(int packet) {
+        System.out.println("Packet forwarded: "+ packet);
+    }
+
+    private static void drop(int packet) {
+        System.out.println("Packet dropped: "+ packet);
+    }
 
     public static void main(String[] args) {
-        int output, packetSize, bucketSize, n;
+        TokenBucket throttle = new TokenBucket(1, 1);
+        int packet, count = 0;
         Scanner sc = new Scanner(System.in);
-        Random rand = new Random();
-        System.out.print("Enter the bucket size(eg. 512): ");
-        bucketSize = sc.nextInt();
-        System.out.print("Enter the output rate: ");
-        output = sc.nextInt();
-        System.out.print("Enter the number of packets: ");
-        n = sc.nextInt();
+        System.out.print("Enter number of packets to be transmitted: ");
+        packet = sc.nextInt();
         sc.close();
-        for (int i = 1; i <= n; ++i) {
-            packetSize = rand.nextInt(1000);
-            System.out.println("Packet number: "+ i +"\tPacket size = "+ packetSize);
-            solution(bucketSize, packetSize, output); 
+        while (true) {
+            if (count == packet) 
+                break;
+            try{
+                Thread.sleep(500);
+            } catch(InterruptedException e) {
+                System.out.println(e);
+            }
+            throttle.handle(count);
+            count += 1;
         }
+
     }
 }
