@@ -7,12 +7,17 @@ public class DVRA {
     private static int edges;
 
     static void display_tables() {
+        update_tables();
         for (int i = 0; i < vertices; ++i) {
-            for (int j = vertices - 1; j >= 0; j--) {
-                System.out.print("\t"+ graph[i][j]);
+            for (int j = 0; j < vertices; ++j) {
+                System.out.print("\tCost: "+ graph[i][j]);
             }
             System.out.println();
         }
+    }
+
+    static void update_tables() {
+        
     }
     
     public static void main(String[] args) {
@@ -30,8 +35,8 @@ public class DVRA {
                     graph[i][j] = 0;
                     routingTable[i][j] = 0;
                 } else { 
-                    graph[i][j] = 9999;
-                    routingTable[i][j] = 9999;
+                    graph[i][j] = 99999;
+                    routingTable[i][j] = 99999;
                 }
             }
         }
@@ -57,5 +62,6 @@ public class DVRA {
         // }
 
         display_tables();
+        sc.close();
     }
 }
