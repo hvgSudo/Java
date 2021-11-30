@@ -28,7 +28,7 @@ public class SelectiveRepeatClient {
             }
             for (int i = 0; i < p; ++i) 
                 if (v[i] == -1) {
-                    System.out.println("Not received number: "+ (i+1));
+                    System.out.println("Not received number: "+ (i+1)*10);
                     System.out.println("Request to retransmit from packet no "+ (i+1) +" again!!");
                     n = i;
                     out.write(n);

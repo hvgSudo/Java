@@ -25,8 +25,8 @@ public class TokenBucket {
         
         bucket = bucket + time_passed * (tokens / time_unit);
 
-        System.out.println("Bucket: "+ bucket);
-        System.out.println("Tokens: "+ tokens);
+        System.out.println("Bucket: "+ (bucket+1));
+        System.out.println("Tokens: "+ (tokens+1));
 
         if (bucket > tokens)
             bucket = tokens;
@@ -39,11 +39,11 @@ public class TokenBucket {
     }
 
     private static void forward(int packet) {
-        System.out.println("Packet forwarded: "+ packet);
+        System.out.println("Packet forwarded: "+ (packet+1));
     }
 
     private static void drop(int packet) {
-        System.out.println("Packet dropped: "+ packet);
+        System.out.println("Packet dropped: "+ (packet+1));
     }
 
     public static void main(String[] args) {
